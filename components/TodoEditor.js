@@ -1,6 +1,6 @@
 const {Component, PropTypes} = React;
 
-class Editor extends Component {
+class TodoEditor extends Component {
 	static propTypes = {
 		onSave: PropTypes.func,
 		onCancel: PropTypes.func,
@@ -36,25 +36,27 @@ class Editor extends Component {
 
 	render() {
 		return (
-			<div className="ui horizontal segment grid stackable">
-				<div className="ui twelve wide column">
-					<div className="ui input left icon fluid">
+			<TodoContainer
+				left={
+					<div className="ui input left icon fluid small">
 						<i className="pencil icon"></i>
 						<input type="text" placeholder="Enter text here"
 							value={this.state.value} onChange={this.change} />
 					</div>
-				</div>
-				<div className="ui right four wide column">
-					<Button flavor="primary" onClick={this.save}>
-						<i className="checkmark icon"></i> Save
-					</Button>
-					<Button flavor="negative" onClick={this.cancel}>
-						<i className="cancel icon"></i> Cancel
-					</Button>
-				</div>
-			</div>
+				}
+				right={
+					<div>
+						<Button flavor="primary" onClick={this.save}>
+							<i className="checkmark icon"></i> Save
+						</Button>
+						<Button flavor="negative" onClick={this.cancel}>
+							<i className="cancel icon"></i> Cancel
+						</Button>
+					</div>
+				}
+			/>
 		);
 	}
 };
 
-window.Editor = Editor;
+window.TodoEditor = TodoEditor;

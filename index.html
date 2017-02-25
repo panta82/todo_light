@@ -3,27 +3,34 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"></link>
+	<link rel="stylesheet" href="index.css"></link>
 </head>
 
 <body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+	<div class="ui container">
+		<h1 class="ui icon header center aligned">
+			<i class="lab circular icon teal"></i>
+			<div class="content">
+				TODO Light
+				<div class="sub header">React TODO list without a buid system</div>
+			</div>
+		</h1>
 
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>-->
+		<div id="root"></div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.min.js"></script>
 	
+	<script type="text/babel" src="components/TodoContainer.js"></script>
 	<script type="text/babel" src="components/Button.js"></script>
-	<script type="text/babel" src="components/Item.js"></script>
-	<script type="text/babel" src="components/Editor.js"></script>
+	<script type="text/babel" src="components/TodoItem.js"></script>
+	<script type="text/babel" src="components/TodoEditor.js"></script>
+	<script type="text/babel" src="components/TodoFooter.js"></script>
 	<script type="text/babel" src="components/App.js"></script>
 	<script type="text/babel" src="index.js"></script>
-	
-	<h1>TODO list</h1>
-
-	<div id="root"></div>
 </body>
 </html>

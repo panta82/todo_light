@@ -1,0 +1,14 @@
+.TodoContainer {
+	display: flex;
+	align-items: center;
+	min-height: 65px;
+}
+.TodoContainer-left {
+	flex-grow: 1;
+	margin-right: 10px;
+}
+.TodoContainer-right {
+	flex-shrink: 1;
+	min-width: 190px;
+	text-align: right;
+}
