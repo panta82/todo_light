@@ -1,14 +1,40 @@
 .TodoContainer {
-	display: flex;
-	align-items: center;
 	min-height: 65px;
 }
 .TodoContainer-left {
-	flex-grow: 1;
-	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.TodoContainer-center {
+	margin-bottom: 10px;
 }
 .TodoContainer-right {
-	flex-shrink: 1;
-	min-width: 190px;
 	text-align: right;
+}
+
+@media only screen and (min-width: 768px) {
+	.TodoContainer {
+		display: flex;
+		align-items: center;
+		min-height: 65px;
+	}
+	.TodoContainer-left {
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin-bottom: 0;
+		margin-right: 10px;
+	}
+	.TodoContainer-center {
+		flex-grow: 1;
+		flex-shrink: 1;
+		margin-bottom: 0;
+		margin-right: 10px;
+	}
+	.TodoContainer-right {
+		flex-shrink: 0;
+		flex-grow: 0;
+	}	
+}
+
+.TodoItem.done .TodoItem-label {
+	text-decoration: line-through;
 }

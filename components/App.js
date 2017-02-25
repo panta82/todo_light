@@ -61,6 +61,15 @@ class App extends Component {
 		this.cancel();
 		this.setState({editIndex: -1});
 	}
+
+	doneChanged(index, done) {
+		const todo = this.state.data[index];
+		if (todo) {
+			todo.done = done;
+		}
+		this.setState({ data: this.state.data });
+		this.onDataChanged();
+	}
 	
 	render() {
 		const rows = this.state.data.map((item, index) => {
@@ -76,6 +85,8 @@ class App extends Component {
 			return (
 				<TodoItem key={index}
 					value={item.value}
+					done={item.done}
+					onDoneChanged={(done) => this.doneChanged(index, done)}
 					onEdit={() => this.edit(index)}
 					onDelete={() => this.delete(index)} />
 			);

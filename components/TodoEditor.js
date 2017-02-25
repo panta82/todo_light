@@ -37,7 +37,7 @@ class TodoEditor extends Component {
 	render() {
 		return (
 			<TodoContainer
-				left={
+				center={
 					<div className="ui input left icon fluid small">
 						<i className="pencil icon"></i>
 						<input type="text" placeholder="Enter text here"

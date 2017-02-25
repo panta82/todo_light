@@ -1,10 +1,18 @@
 const {Component, PropTypes} = React;
 
-const TodoItem = ({value, onEdit, onDelete}) => {
+const TodoItem = ({value, done = false, onDoneChanged, onEdit, onDelete}) => {
+	let className = 'TodoItem';
+	if (done) {
+		className += ' done';
+	}
 	return (
 		<TodoContainer
+			className={className}
 			left={
-				<h3>{value}</h3>
+				<DoneButton done={done} onChange={onDoneChanged} />
+			}
+			center={
+				<h3 className="TodoItem-label ui header">{value}</h3>
 			}
 			right={
 				<div>
@@ -22,6 +30,8 @@ const TodoItem = ({value, onEdit, onDelete}) => {
 
 TodoItem.propTypes = {
 	value: PropTypes.string,
+	done: PropTypes.bool,
+	onDoneChanged: PropTypes.func,
 	onEdit: PropTypes.func,
 	onDelete: PropTypes.func
 };

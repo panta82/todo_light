@@ -1,7 +1,7 @@
 const {Component, PropTypes} = React;
 
 const Button = ({className = '', onClick, flavor = null, children}) => {
-	className += 'ui button small';
+	className += ' ui button small';
 	if (flavor) {
 		className += ' ' + flavor;
 	}

@@ -10,7 +10,7 @@ const TodoFooter = ({count, onNew}) => {
 	return (
 		<TodoContainer
 			borderless
-			left={
+			center={
 				<em>{countStr}</em>
 			}
 			right={
