@@ -1,4 +1,4 @@
-const {Component, PropTypes} = React;
+const {PropTypes} = React;
 
 const Button = ({className = '', onClick, flavor = null, children}) => {
 	className += ' ui button small';
