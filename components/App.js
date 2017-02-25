@@ -96,7 +96,7 @@ class App extends Component {
 
 		const lastRow = this.state.editIndex === -1
 			? <TodoEditor onSave={value => this.save(value)} onCancel={() => this.cancel()} />
-			: <TodoFooter count={this.state.data.length} onNew={() => this.createNew()} />;
+			: <TodoFooter data={this.state.data} onNew={() => this.createNew()} />;
 
 		return (
 			<div className="ui container">
