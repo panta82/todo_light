@@ -12,7 +12,7 @@ const TodoItem = ({value, onEdit, onDelete}) => {
 						<i className="edit icon"></i> Edit
 					</Button>
 					<Button flavor="negative" onClick={() => onDelete && onDelete()}>
-						<i className="delete icon"></i> Delete
+						<i className="trash icon"></i> Delete
 					</Button>
 				</div>
 			}

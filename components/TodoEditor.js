@@ -46,10 +46,10 @@ class TodoEditor extends Component {
 				}
 				right={
 					<div>
-						<Button flavor="primary" onClick={this.save}>
+						<Button flavor="positive" onClick={this.save}>
 							<i className="checkmark icon"></i> Save
 						</Button>
-						<Button flavor="negative" onClick={this.cancel}>
+						<Button onClick={this.cancel}>
 							<i className="cancel icon"></i> Cancel
 						</Button>
 					</div>

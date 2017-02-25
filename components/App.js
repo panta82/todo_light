@@ -1,28 +1,45 @@
-const {Component} = React;
+const {Component, PropTypes} = React;
 
 class App extends Component {
+	static propTypes = {
+		dataStore: PropTypes.object.isRequired
+	};
+
 	constructor() {
 		super();
 		this.state = {
-			items: [{value: 'test'}, {value: 'Test 2'}],
+			data: [],
 			editIndex: null
 		};
 	}
 
+	componentWillMount() {
+		this.setState({
+			data: this.props.dataStore.loadTodos()
+		});
+	}
+
+	onDataChanged() {
+		setTimeout(() => {
+			this.props.dataStore.saveTodos(this.state.data);
+		}, 1);
+	}
+
 	save(value) {
-		const {editIndex, items} = this.state;
+		const {editIndex, data} = this.state;
 		if (editIndex === null) {
 			return;
 		}
 
 		if (editIndex < 0) {
-			items.push({value});
+			data.push({value});
 		} else {
-			items[editIndex] = {value};
+			data[editIndex] = {value};
 		}
 
-		this.setState({items});
+		this.setState({data});
 		this.cancel();
+		this.onDataChanged();
 	}
 
 	cancel() {
@@ -34,9 +51,10 @@ class App extends Component {
 	}
 
 	delete(index) {
-		const {items} = this.state;
-		items.splice(index, 1);
-		this.setState({items});
+		const {data} = this.state;
+		data.splice(index, 1);
+		this.setState({data});
+		this.onDataChanged();
 	}
 
 	createNew() {
@@ -45,7 +63,7 @@ class App extends Component {
 	}
 	
 	render() {
-		const rows = this.state.items.map((item, index) => {
+		const rows = this.state.data.map((item, index) => {
 			if (this.state.editIndex === index) {
 				return (
 					<TodoEditor key={index}
@@ -65,7 +83,7 @@ class App extends Component {
 
 		const lastRow = this.state.editIndex === -1
 			? <TodoEditor onSave={value => this.save(value)} onCancel={() => this.cancel()} />
-			: <TodoFooter count={this.state.items.length} onNew={() => this.createNew()} />;
+			: <TodoFooter count={this.state.data.length} onNew={() => this.createNew()} />;
 
 		return (
 			<div className="ui container">
