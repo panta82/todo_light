@@ -9,7 +9,8 @@ class App extends Component {
 		super();
 		this.state = {
 			data: [],
-			editIndex: null
+			editIndex: null,
+			deleteIndex: null
 		};
 	}
 
@@ -45,14 +46,28 @@ class App extends Component {
 	}
 
 	cancel() {
-		this.setState({editIndex: null});
+		this.setState({
+			editIndex: null,
+			deleteIndex: null
+		});
 	}
 
 	edit(index) {
+		this.cancel();
 		this.setState({editIndex: index});
 	}
 
 	delete(index) {
+		const deleteIndex = this.state.deleteIndex;
+		this.cancel();
+		
+		if (deleteIndex !== index) {
+			this.setState({
+				deleteIndex: index
+			});
+			return;
+		}
+
 		const {data} = this.state;
 		data.splice(index, 1);
 		this.setState({data});
@@ -65,6 +80,7 @@ class App extends Component {
 	}
 
 	doneChanged(index, done) {
+		this.cancel();
 		const todo = this.state.data[index];
 		if (todo) {
 			todo.done = done;
@@ -88,9 +104,11 @@ class App extends Component {
 				<TodoItem key={index}
 					value={item.value}
 					done={item.done}
+					deleting={index === this.state.deleteIndex}
 					onDoneChanged={(done) => this.doneChanged(index, done)}
 					onEdit={() => this.edit(index)}
-					onDelete={() => this.delete(index)} />
+					onDelete={() => this.delete(index)}
+					onCancel={() => this.cancel()} />
 			);
 		});
 
