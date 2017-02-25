@@ -32,9 +32,11 @@ class App extends Component {
 		}
 
 		if (editIndex < 0) {
-			data.push({value});
+			data.push({ value });
 		} else {
-			data[editIndex] = {value};
+			data[editIndex] = Object.assign({}, data[editIndex], {
+				value
+			});
 		}
 
 		this.setState({data});
